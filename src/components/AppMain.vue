@@ -15,10 +15,10 @@ export default {
       <div class="row my-4 gy-4">
         <div class="col col-md-4" v-for="project in data">
           <div class="card">
-<!--             <img src="..." class="card-img-top" alt="...">
- -->            <div class="card-body">
+            <img v-if="project.image" :src="project.image" class="card-img-top" alt="...">
+            <div class="card-body">
               <h5 class="card-title">{{ project.name }}</h5>
-              <p class="card-text">{{ project.content }}</p>
+              <p v-if="project.content" class="card-text">{{ project.content.substring(0,150) + '...'}}</p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
           </div>

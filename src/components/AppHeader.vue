@@ -19,6 +19,11 @@ export default {
                                 About
                             </router-link>
                         </li>
+                        <li>
+                            <router-link :to="{ name: 'project' }" class="nav-link">
+                               Projects
+                            </router-link>
+                        </li>
                         </ul>
     </div>
   </header>

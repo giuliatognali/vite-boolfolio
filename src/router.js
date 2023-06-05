@@ -4,6 +4,7 @@ import { createWebHistory, createRouter } from 'vue-router';
 import HomePage from './pages/HomePage.vue';
 import AboutPage from './pages/AboutPage.vue';
 import ProjectsPage from './pages/ProjectsPage.vue';
+import ProjectDetail from './pages/ProjectDetail.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -20,10 +21,15 @@ const router = createRouter({
             component: AboutPage
         },
         {
-            path: '/project',
-            name: 'project',
+            path: '/projects',
+            name: 'projects',
             component: ProjectsPage
-        }
+        },
+        {
+            path: '/projects/:slug',
+            name: 'project',
+            component: ProjectDetail
+        },
     ]
 });
 

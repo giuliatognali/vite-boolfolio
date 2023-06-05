@@ -15,8 +15,8 @@ export default {
       <p v-if="project.content" class="card-text">{{ project.content.substring(0, 150) + '...' }}</p>
       <div class="text-center">
         <router-link :to="{ name: 'project', params: { slug: project.slug } }" class="btn btn-primary">
-        See Project
-      </router-link>
+          See Project
+        </router-link>
       </div>
 
     </div>

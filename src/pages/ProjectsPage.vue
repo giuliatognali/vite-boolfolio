@@ -36,8 +36,7 @@ export default {
     },
     created() {
         this.getProjects(); //chiamo la funzione
-    },
-    components: { CardProject }
+    }
 }
 </script>
 

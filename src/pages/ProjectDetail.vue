@@ -8,7 +8,9 @@ export default {
             apiUrls: {
                 projects: '/projects'
             },
-            project: []
+            project: [],
+            isError: false,
+            errorMessage: null,
         }
     },
     methods: {
@@ -20,7 +22,16 @@ export default {
                 })
                 .catch((error) => {
                     console.log(error);
+
+                    if (error.response.status === 404) {
+                        console.log('redirect')
+                        this.$router.push({ name: 'not-found' });
+                    }
+
+                    this.isError = true;
+                    this.errorMessage = error.message;
                 })
+
         }
     },
     created() {
@@ -35,7 +46,11 @@ export default {
             <h1>{{ project.name }}</h1>
             <p>{{ project.content }}</p>
         </div>
-
+    </section>
+    <section v-if="isError">
+        <div class="container ">
+            <p>{{ errorMessage }}</p>
+        </div>
     </section>
 </template>
 

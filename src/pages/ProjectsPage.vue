@@ -8,6 +8,8 @@ export default {
     },
     data() {
         return {
+            projectPerPage: 6,
+            currentProjectPerPage: 6,
             apiBaseUrl: "http://127.0.0.1:8000/api",
             apiUrls: {
                 projects: "/projects"
@@ -19,11 +21,17 @@ export default {
         getProjects() {
             axios.get(this.apiBaseUrl + this.apiUrls.projects)
                 .then((response) => {
-                this.projects = response.data.results;
-            })
+                    console.log(response);
+                    this.projects = response.data.results;
+                })
                 .catch((error) => {
-                console.log(error);
-            });
+                    console.log(error);
+                });
+        }
+    },
+    computed: {  //servono per rappresentare un'info in modo differente
+        showProjects() {
+            return this.projects.filter((element, index) => index < this.currentProjectPerPage)
         }
     },
     created() {
@@ -38,9 +46,12 @@ export default {
         <h1>Projects Page</h1>
         <div class="container">
             <div class="row my-4 gy-4">
-                <div class="col col-md-4" v-for="project in projects">
-                    <CardProject :project="project"/>
+                <div class="col col-md-4" v-for="project in showProjects">
+                    <CardProject :project="project" />
                 </div>
+            </div>
+            <div class="text-center my-5">
+                <button class="btn btn-primary" v-if="currentProjectPerPage <= projects.length" @click.prevent="currentProjectPerPage += projectPerPage">Load more</button>
             </div>
         </div>
     </section>

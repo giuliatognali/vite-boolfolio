@@ -6,6 +6,7 @@ export default {
     data() {
         return {
             store,
+            currentType: '',
             types: []
         }
     },
@@ -21,6 +22,10 @@ export default {
                     console.log(error);
                 });
 
+        },
+        changePage(){
+            console.log(this.currentType);
+            this.$router.push({name: 'type', params:{slug: this.currentType}})
         }
     },
     created() {
@@ -31,8 +36,8 @@ export default {
 }
 </script>
 <template>
-    <select class="form-select" v-if="types.length > 0">
-        <option v-for="type in types"> {{type.name}}</option>
+    <select class="form-select" v-if="types.length > 0" @change="changePage" v-model="currentType">
+        <option :value="type.slug" v-for="type in types"> {{type.name}}</option>
 
     </select>
 </template>

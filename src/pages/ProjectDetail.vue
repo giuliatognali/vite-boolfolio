@@ -44,7 +44,12 @@ export default {
     <section v-if="project">
         <div class="container">
             <h1>{{ project.name }}</h1>
-            <h2>Type: {{ project.type.slug }}</h2>
+            <h2>Type:
+                <router-link :to="{name:'type', params: {slug: project.type.slug}}" class="nav-link">
+                    {{ project.type.name }}
+                </router-link>
+                 
+            </h2>
             <p>{{ project.content }}</p>
             <div class="my-2" v-show="project.technologies.length">
                 <span class="badge text-bg-info me-2" v-for="technology in project.technologies">{{ technology.name }}</span>

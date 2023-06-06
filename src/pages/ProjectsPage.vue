@@ -42,8 +42,9 @@ export default {
 
 <template>
     <section>
-        <h1>Projects Page</h1>
+        
         <div class="container">
+            <h1>Projects Page</h1>
             <div class="row my-4 gy-4">
                 <div class="col col-md-4" v-for="project in showProjects">
                     <CardProject :project="project" />

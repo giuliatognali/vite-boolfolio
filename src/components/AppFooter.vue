@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-  <footer>
+  <footer class="py-3">
     <div class="container">
       <h1>Footer</h1>
     </div>
@@ -15,5 +15,6 @@ export default {
 <style lang="scss" scoped>
 footer {
   background-color: darkslategrey;
+  color:white;
 }
 </style>

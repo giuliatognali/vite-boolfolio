@@ -44,7 +44,11 @@ export default {
     <section v-if="project">
         <div class="container">
             <h1>{{ project.name }}</h1>
+            <h2>Type: {{ project.type.slug }}</h2>
             <p>{{ project.content }}</p>
+            <div class="my-2" v-show="project.technologies.length">
+                <span class="badge text-bg-info me-2" v-for="technology in project.technologies">{{ technology.name }}</span>
+            </div>
         </div>
     </section>
     <section v-if="isError">

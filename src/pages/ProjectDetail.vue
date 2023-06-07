@@ -8,7 +8,7 @@ export default {
             apiUrls: {
                 projects: '/projects'
             },
-            project: [],
+            project: null,
             isError: false,
             errorMessage: null,
         }
@@ -44,7 +44,7 @@ export default {
     <section v-if="project">
         <div class="container">
             <h1>{{ project.name }}</h1>
-            <h2>Type:
+            <h2 v-if="project">Type:
                 <router-link :to="{name:'type', params: {slug: project.type.slug}}" class="nav-link">
                     {{ project.type.name }}
                 </router-link>
